@@ -14,10 +14,17 @@ namespace GitDemo
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Cuisine",
+                url: "cuisine/{name}",
+                defaults: new { controller = "Cuisine", action = "Search", name = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Employees",
                 url: "Employees/{action}/{id}",
                 defaults: new { controller = "Employees", action = "Index", id = UrlParameter.Optional }
             );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

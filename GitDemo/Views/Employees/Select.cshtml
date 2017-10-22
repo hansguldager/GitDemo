@@ -1,0 +1,57 @@
+﻿
+@model IEnumerable<GitDemo.Models.Employee>
+
+@{ ViewBag.Title = "Select"; }
+
+<h2>Select</h2>
+
+<table class="table">
+    <tr>
+        <th> @Html.DisplayNameFor(model => model.FirstName) </th>
+        <th> @Html.DisplayNameFor(model => model.LastName) </th>
+        <th> @Html.DisplayNameFor(model => model.Salary) </th>
+        <th> @Html.DisplayNameFor(model => model.Department) </th>
+        <th> @Html.DisplayNameFor(model => model.Position) </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td> @Html.DisplayFor(modelItem => item.FirstName) </td>
+            <td> @Html.DisplayFor(modelItem => item.LastName) </td>
+            <td> @Html.DisplayFor(modelItem => item.Salary) </td>
+            <td> @Html.DisplayFor(modelItem => item.Department) </td>
+            <td> @Html.DisplayFor(modelItem => item.Position) </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+<form>
+    Employees by category?<br>
+    <input type="radio" name="" id="department">Department<br>
+    <input type="radio" name="" id="position">Position<br>
+    <input type="text" id="employeeDetail" value="my choice" />
+    <button onclick="selectAndView()">Go for it...</button>
+</form>
+
+<script>
+    function selectAndView() {
+        var detailedInfo = document.getElementById("employeeDetail").toString();
+        window.alert("var detailedInfo = " + detailedInfo);
+        if (document.getElementById("department").checked = true)
+            var dep = db.Employees.Where(i => i.Department == detailedInfo.toString());
+        if (document.getElementById("position").checked = true)
+            var pos = db.Employees.Where(i => i.Position == detailedInfo.toString());
+
+        window.alert("var detailedInfo = " + detailedInfo);
+        window.alert("var dep = " + dep.toString());
+        window.alert("var pos = " + pos.toString());
+    }
+</script>
+
+

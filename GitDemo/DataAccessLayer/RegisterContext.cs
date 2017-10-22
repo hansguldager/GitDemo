@@ -18,5 +18,7 @@ namespace GitDemo.DataAccessLayer
         //}
 
         public RegisterContext() : base("DefaultConnection") { }
+
+        public System.Data.Entity.DbSet<GitDemo.Models.Review> Reviews { get; set; }
     }
 }

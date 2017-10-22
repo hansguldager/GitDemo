@@ -15,11 +15,24 @@ namespace GitDemo.Controllers
     {
         private RegisterContext db = new RegisterContext();
 
+        //// GET: Employees
+        //public ActionResult Index(List)
+        //{
+        //    // return Content("EmployeesController : public ActionResult Index()");
+        //    return View(db.Employees.ToList());
+        //}
+
         // GET: Employees
         public ActionResult Index()
         {
-            // return Content("EmployeesController : public ActionResult Index()");
             return View(db.Employees.ToList());
+        }
+
+        // GET: Select employees by category Department == "onFloor"
+        public ActionResult Select()
+        {
+            var Workers = db.Employees.Where(i => i.Department == "onFloor");
+            return View(Workers.ToList());
         }
 
         // GET: Employees/Details/5
